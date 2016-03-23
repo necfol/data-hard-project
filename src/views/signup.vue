@@ -46,10 +46,10 @@
         </div>
     </section>
 </template>
-<style src="./assets/plugins/bootstrap/css/bootstrap.min.css"></style>
-<style src="./assets/css/simple-line-icons.css"></style>
-<style src="./assets/css/animate.css"></style>
-<style src="./assets/css/main.css"></style>
+<style src="../assets/plugins/bootstrap/css/bootstrap.min.css"></style>
+<style src="../assets/css/simple-line-icons.css"></style>
+<style src="../assets/css/animate.css"></style>
+<style src="../assets/css/main.css"></style>
 <script>
 export default {
   data () {

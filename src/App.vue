@@ -485,6 +485,9 @@
 
 <script>
 export default {
+  ready () {
+    this.$route.router.go('/signup')
+  },
   data () {
     return {
       ishome: true,
