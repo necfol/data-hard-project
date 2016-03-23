@@ -28,22 +28,6 @@ export default function (router) {
         }
       }
     },
-    // '/home': {
-    //   name: 'home',
-    //   component: home
-    // },
-    // '/realmonitor': {
-    //   name: 'realmonitor',
-    //   component: realmonitor
-    // },
-    // '/devices': {
-    //   name: 'devices',
-    //   component: devices
-    // },
-    // '/remark': {
-    //   name: 'remark',
-    //   component: remark
-    // },
     '/signup': {
       name: 'signup',
       component: signup
