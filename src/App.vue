@@ -3,7 +3,7 @@
         <header id="header">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo">
+                <a href="#home" v-link="{ path: '/home'}" class="logo">
                     <i class="icon-layers"></i>
                     <span>NEU</span>BOARD</a>
             </div>
@@ -134,22 +134,22 @@
                 <h5 class="sidebar-header">Navigation</h5>
                 <ul class="nav nav-pills nav-stacked">
                     <li v-bind:class="{'active': ishome}">
-                        <a href="#" v-on:click="loadpage" title="index" id="home">
-                            <i class="fa  fa-fw fa-tachometer"></i> 首页
-                        </a>
+                           <a href="#" v-on:click.stop.prevent="loadpage" id="home">
+                              <i class="fa  fa-fw fa-tachometer"></i> 首页
+                            </a>
                     </li>
-                    <li v-bind:class="{'active': false}">
-                        <a href="#" v-on:click="loadpage" title="index" id="realmonitor">
+                    <li v-bind:class="{'active': isrealmonitor}">
+                        <a href="#" v-on:click.stop.prevent="loadpage" id="realmonitor">
                             <i class="fa  fa-fw fa-tachometer"></i> 实时监控
                         </a>
                     </li>
-                    <li v-bind:class="{'active': false}">
-                        <a href="#" v-on:click="loadpage" title="index" id="devices">
+                    <li v-bind:class="{'active': isdevices}">
+                        <a href="#" v-on:click.stop.prevent="loadpage" id="devices">
                             <i class="fa  fa-fw fa-tachometer"></i> 查看设备
                         </a>
                     </li>
-                    <li v-bind:class="{'active': false}">
-                        <a href="#" v-on:click="loadpage" title="index" id="remark">
+                    <li v-bind:class="{'active': isremark}">
+                        <a href="#" v-on:click.stop.prevent="loadpage" id="remark">
                             <i class="fa  fa-fw fa-tachometer"></i> 反馈
                         </a>
                     </li>
@@ -212,249 +212,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                        <div class="panel panel-default browser-chart">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">BROWSER STATS</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                        <ul>
-                                            <li><i class="fa fa-circle success-color"></i> Chrome</li>
-                                            <li><i class="fa fa-circle primary-color"></i> IE</li>
-                                            <li><i class="fa fa-circle warning-color"></i> Safari</li>
-                                            <li><i class="fa fa-circle info-color"></i> Firefox</li>
-                                            <li><i class="fa fa-circle default-color"></i> Other</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                        <div id="doughnut-canvas-holder">
-                                            <canvas id="doughnut-chart-area" width="137" height="137"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Monthly Goal</h3>
-                                <div class="actions pull-right">
-                                    <i class="fa fa-expand"></i>
-                                </div>
-                            </div>
-                            <div class="panel-body widget-gauge">
-                                <canvas width="160" height="100" id="gauge" class=""></canvas>
-                                <div class="goal-wrapper">
-                                    <span class="gauge-value pull-left">$</span>
-                                    <span id="gauge-text" class="gauge-value pull-left">3,200</span>
-                                    <span id="goal-text" class="goal-value pull-right">$5,000</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
-              <!--   <div class="row">
-                    <div class="col-md-12 col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">SERVER STATS</h3>
-                                <div class="reportdate actions">
-                                    <i class="fa fa-calendar-o"></i>
-                                    <span>Jan 1 - June 30</span>
-                                    <b class="caret"></b>
-                                </div>
-                            </div>
-                            <div class="panel-body server-chart">
-                                <div class="row">
-                                    <div class="col-md-12 col-lg-4">
-                                        <ul>
-                                            <li>
-                                                <span class="text-left">Network Usage</span>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span class="text-left">CPU Load</span>
-                                                <div class="progress progress-xs">
-                                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-                                    </div>
-                                    <div class="col-md-12 col-lg-8">
-                                        <div class="row">
-                                            <div class="col-md-12 col-lg-6">
-                                                <div class="line-chart">
-                                                    <canvas id="canvas1" height="100"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 col-lg-6">
-                                                <div class="bar-chart">
-                                                    <canvas id="canvas2" height="100"></canvas>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                        <div class="panel panel-default chat-widget">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">chat</h3>
-                                <div class="actions pull-right">
-                                    <i class="fa fa-expand"></i>
-                                    <i class="fa fa-chevron-down"></i>
-                                    <i class="fa fa-times"></i>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row wrapper animated fadeInRight">
-                                    <div class="col-xs-2 col-sm-2 col-md-2 ">
-                                        <span class="avatar">
-                                        <img src="assets/img/avatar3.png" class="img-circle" alt="">
-                                        <i class="on animated bounceIn"></i>
-                                    </span>
-                                    </div>
-                                    <div class="col-xs-10 col-sm-10 col-md-10">
-                                        <div class="post default">
-                                            <span class="arrow left"></span>
-                                            <p>Hey Mike...Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibut</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row wrapper animated fadeInLeft">
-                                    <div class="col-xs-10 col-sm-10 col-md-10">
-                                        <div class="post primary">
-                                            <span class="arrow right"></span>
-                                            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <span class="avatar">
-                                        <img src="assets/img/profile.jpg" class="img-circle" alt="">
-                                        <i class="on animated bounceIn"></i>
-                                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <form>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Say something">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="button">SEND</button>
-                                         </span>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div class="panel">
-                            <div class="panel-body">
-                                <div class="calendar-block ">
-                                    <div class="cal1">
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                        <div class="panel panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Weather</h3>
-                                <div class="actions pull-right">
-                                    <i class="fa fa-expand"></i>
-                                    <i class="fa fa-chevron-down"></i>
-                                    <i class="fa fa-times"></i>
-                                </div>
-                            </div>
-                            <div class="panel-body widget-weather">
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <h3 class="text-center title">Today</h3>
-                                        <div class="text-center">
-                                            <canvas id="clear-day" width="75" height="75"></canvas>
-                                            <div class="temp">62°C</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <h3 class="text-center title">Tonight</h3>
-                                        <div class="text-center">
-                                            <canvas id="partly-cloudy-night" width="75" height="75"></canvas>
-                                            <div class="temp">44°C</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-2">
-                                        <h6 class="text-center small-thin uppercase">Mon</h6>
-                                        <div class="text-center">
-                                            <canvas id="partly-cloudy-day" width="32" height="32"></canvas>
-                                            <span>48°C</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-6 col-sm-6 col-md-2">
-                                        <h6 class="text-center small-thin uppercase">Tue</h6>
-                                        <div class="text-center">
-                                            <canvas id="rain" width="32" height="32"></canvas>
-                                            <span>39°C</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-6 col-sm-6 col-md-2">
-                                        <h6 class="text-center small-thin uppercase">Wed</h6>
-                                        <div class="text-center">
-                                            <canvas id="sleet" width="32" height="32"></canvas>
-                                            <span>32°C</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-6 col-sm-6 col-md-2">
-                                        <h6 class="text-center small-thin uppercase">Thu</h6>
-                                        <div class="text-center">
-                                            <canvas id="snow" width="32" height="32"></canvas>
-                                            <span>28°C</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-6 col-sm-6 col-md-2">
-                                        <h6 class="text-center small-thin uppercase">Fri</h6>
-                                        <div class="text-center">
-                                            <canvas id="wind" width="32" height="32"></canvas>
-                                            <span>40°C</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-6 col-sm-6 col-md-2">
-                                        <h6 class="text-center small-thin uppercase">Sat</h6>
-                                        <div class="text-center">
-                                            <canvas id="fog" width="32" height="32"></canvas>
-                                            <span>42°C</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </section>
         </section>
         <!--main content end-->
@@ -727,52 +485,48 @@
 
 <script>
 export default {
-
-  // ready () {
-  //   var ishome = true
-  //   var isrealmonitor
-  //   var isdevices
-  //   var isremark
-  // },
-  data: {
-    ishome: false,
-    isrealmonitor: false,
-    isdevices: false,
-    isremark: false
+  data () {
+    return {
+      ishome: true,
+      isrealmonitor: false,
+      isdevices: false,
+      isremark: false
+    }
   },
   methods: {
     loadpage: function (e) {
+      var path
       switch (e.currentTarget.id) {
         case 'home':
-          console.log('home')
-          // ishome = true
-          // isrealmonitor = false
-          // isdevices = false
-          // isremark = false
+          path = '/home'
+          this.ishome = true
+          this.isrealmonitor = false
+          this.isdevices = false
+          this.isremark = false
           break
         case 'realmonitor':
-          this.$route.router.go('/fuck')
-          console.log('realmonitor')
-          // isrealmonitor = true
-          // ishome = false
-          // isdevices = false
-          // isremark = false
+          path = '/realmonitor'
+          this.ishome = false
+          this.isrealmonitor = true
+          this.isdevices = false
+          this.isremark = false
           break
         case 'devices':
-          console.log('devices')
-          // isdevices = true
-          // ishome = false
-          // isrealmonitor = false
-          // isremark = false
+          path = '/devices'
+          this.ishome = false
+          this.isrealmonitor = false
+          this.isdevices = true
+          this.isremark = false
           break
         case 'remark':
-          console.log('remark')
-          // isremark = true
-          // ishome = false
-          // isrealmonitor = false
-          // isdevices = false
+          path = '/remark'
+          this.ishome = false
+          this.isrealmonitor = false
+          this.isdevices = false
+          this.isremark = true
           break
       }
+      this.$route.router.go(path)
     }
   }
 }

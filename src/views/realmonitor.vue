@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>shiddddddddddddddt</h1>
+    <h1>realmonitor</h1>
   </div>
 </template>
 
