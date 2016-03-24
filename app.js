@@ -2,8 +2,9 @@ var express = require('express')
 var path = require('path');
 var webpack = require('webpack')
 var config = require('./build/webpack.dev.conf')
+var bodyParser = require('body-parser')
 var proxyMiddleware = require('http-proxy-middleware')
-
+var signup = require('./routes/signup.js');
 var app = express()
 var compiler = webpack(config)
 
@@ -61,7 +62,12 @@ app.use(hotMiddleware)
 
 // serve pure static assets
 app.use('/static', express.static('./static'))
-module.exports = app.listen(8080, function(err) {
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
+app.use('/signup', signup)
+module.exports = app.listen(80, function(err) {
   if (err) {
     console.log(err)
     return
