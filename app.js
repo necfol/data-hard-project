@@ -5,6 +5,7 @@ var config = require('./build/webpack.dev.conf')
 var bodyParser = require('body-parser')
 var proxyMiddleware = require('http-proxy-middleware')
 var signup = require('./routes/signup.js');
+var signin = require('./routes/signin.js');
 var app = express()
 var compiler = webpack(config)
 
@@ -67,6 +68,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use('/signup', signup)
+app.use('/signin', signin)
 module.exports = app.listen(80, function(err) {
   if (err) {
     console.log(err)
