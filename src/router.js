@@ -4,6 +4,7 @@ var realmonitor = require('./views/realmonitor.vue')
 var devices = require('./views/devices.vue')
 var remark = require('./views/remark.vue')
 var signup = require('./views/signup.vue')
+var signin = require('./views/signin.vue')
 export default function (router) {
   router.map({
     '/': {
@@ -31,6 +32,10 @@ export default function (router) {
     '/signup': {
       name: 'signup',
       component: signup
+    },
+    '/signin': {
+      name: 'signin',
+      component: signin
     }
   })
 }

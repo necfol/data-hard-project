@@ -17,7 +17,7 @@
                         </h3>  
                     </div>
                     <div class="panel-body">
-                        <p >已经注册过啦？ <a href="pages-login.html"><strong>登录</strong></a></p>
+                        <p >已经注册过啦？ <a href="#" v-link="{path: '/signin'}"><strong>登录</strong></a></p>
                         <form role="form">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">用户名</label>
