@@ -11,6 +11,10 @@ export default function (router) {
       name: 'app',
       component: App,
       subRoutes: {
+        '/': {
+          name: 'home',
+          component: home
+        },
         '/home': {
           name: 'home',
           component: home

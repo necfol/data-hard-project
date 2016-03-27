@@ -7,7 +7,7 @@
                         <div class="brand">
                             <a href="index.html" class="logo">
                                 <i class="icon-layers"></i>
-                                <span>NEU</span>BOARD</a>
+                                <span>管理</span>测试</a>
                         </div>
                     </header>
                 <div class="panel panel-primary">

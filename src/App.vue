@@ -5,7 +5,7 @@
             <div class="brand">
                 <a href="#home" v-link="{ path: '/home'}" class="logo">
                     <i class="icon-layers"></i>
-                    <span>NEU</span>BOARD</a>
+                    <span>管理</span>管理</a>
             </div>
             <!--logo end-->
             <ul class="nav navbar-nav navbar-left">
@@ -32,12 +32,12 @@
                             <span class="avatar">
                                 <img src="assets/img/profile.jpg" class="img-circle" alt="">
                             </span>
-                        <span class="text">Mike Adams</span>
+                        <span class="text">测试账户</span>
                         <span class="caret"></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight" role="menu">
-                        <li>
+                     <!--    <li>
                             <span class="arrow top"></span>
                             <h5>
                                 <span>80%</span>
@@ -48,27 +48,27 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="divider"></li>
+                        <li class="divider"></li> -->
                         <li>
                             <a href="javascript:void(0);">
                                 <span class="icon"><i class="fa fa-user"></i>
-                                </span>My Account</a>
+                                </span>个人设置</a>
                         </li>
-                        <li>
+                       <!--  <li>
                             <a href="javascript:void(0);">
                                 <span class="icon"><i class="fa fa-envelope"></i>
                                 </span>Messages</a>
-                        </li>
-                        <li>
+                        </li> -->
+                        <!-- <li>
                             <a href="javascript:void(0);">
                                 <span class="icon"><i class="fa fa-cog"></i>
                                 </span>Settings</a>
-                        </li>
+                        </li> -->
                         <li class="divider"></li>
                         <li>
                             <a href="javascript:void(0);">
                                 <span class="icon"><i class="fa fa-sign-out"></i>
-                                </span>Logout</a>
+                                </span>退出</a>
                         </li>
                     </ul>
                 </li>
@@ -92,9 +92,9 @@
                     <i class="on border-dark animated bounceIn"></i>
                 </div>
                 <div class="profile-body dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>Mike Adams <span class="caret"></span></h4></a>
-                    <small class="title">Front-end Developer</small>
-                    <ul class="dropdown-menu animated fadeInRight" role="menu">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>管理员<span class="caret"></span></h4></a>
+                    <small class="title">管理员</small>
+                   <!--  <ul class="dropdown-menu animated fadeInRight" role="menu">
                         <li class="profile-progress">
                             <h5>
                                 <span>80%</span>
@@ -127,11 +127,11 @@
                                 <span class="icon"><i class="fa fa-sign-out"></i>
                                 </span>Logout</a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
             <nav>
-                <h5 class="sidebar-header">Navigation</h5>
+                <h5 class="sidebar-header">导航</h5>
                 <ul class="nav nav-pills nav-stacked">
                     <li v-bind:class="{'active': ishome}">
                            <a href="#" v-on:click.stop.prevent="loadpage" id="home">
@@ -156,63 +156,25 @@
                 </ul>
             </nav>
         </aside>
+        
         <!--sidebar left end-->
         <!--main content start-->
         <section class="main-content-wrapper">
             <div class="pageheader">
-                <!-- <h1>Dashboard</h1> -->
-          <router-view></router-view>
-                <p class="description">Welcome to NEUBOARD Responsive Admin Theme</p>
                 <div class="breadcrumb-wrapper hidden-xs">
-                    <span class="label">You are here:</span>
-                    <ol class="breadcrumb">
-                        <li class="active">Dashboard</li>
-                    </ol>
+                    <span class="label">欢迎</span>
+                    <!-- <ol class="breadcrumb">
+                        <li class="active">进入</li>
+                    </ol> -->
                 </div>
             </div>
             <section id="main-content" class="animated fadeInUp">
-                <div class="row">
-                    <div class="col-md-12 col-lg-6">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="panel panel-solid-success widget-mini">
-                                    <div class="panel-body">
-                                        <i class="icon-bar-chart"></i>
-                                        <span class="total text-center">$3,200</span>
-                                        <span class="title text-center">Earnings</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="panel widget-mini">
-                                    <div class="panel-body">
-                                        <i class="icon-support"></i>
-                                        <span class="total text-center">1,230</span>
-                                        <span class="title text-center">Support</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="panel widget-mini">
-                                    <div class="panel-body">
-                                        <i class="icon-envelope-open"></i>
-                                        <span class="total text-center">1,680</span>
-                                        <span class="title text-center">Messages</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="panel panel-solid-info widget-mini">
-                                    <div class="panel-body">
-                                        <i class="icon-user"></i>
-                                        <span class="total text-center">12,680</span>
-                                        <span class="title text-center">Signups</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <div class="row">
+                <router-view></router-view>
+
+
+<!-- -DDDD -->
+              </div>
             </section>
         </section>
         <!--main content end-->
@@ -232,7 +194,7 @@
                     </li>
                 </ul>
             </div>
-            <div id="contact-list">
+          <!--   <div id="contact-list">
                 <ul>
                     <li>
                         <div class="row">
@@ -361,7 +323,7 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <div id="contact-user">
                 <div class="chat-user active"><span><i class="icon-bubble"></i></span>
                 </div>
@@ -486,7 +448,7 @@
 <script>
 export default {
   ready () {
-    this.$route.router.go('/signup')
+    // this.$route.router.go('/signup')
   },
   data () {
     return {

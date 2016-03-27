@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import routerconfig from './router'
-
+var $ = require('jquery')
+window.jQuery = $
+window.$ = $
 Vue.use(VueResource)
 Vue.use(VueRouter)
 const router = new VueRouter({

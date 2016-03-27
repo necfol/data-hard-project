@@ -7,7 +7,7 @@
                         <div class="brand">
                             <a href="index.html" class="logo">
                                 <i class="icon-layers"></i>
-                                <span>NEU</span>BOARD</a>
+                                <span>管理</span>测试</a>
                         </div>
                     </header>
                     <div class="panel panel-primary">
@@ -21,14 +21,14 @@
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <input type="email" class="form-control" v-model="email" id="email" placeholder="请输入登录邮箱">
+                                        <input type="phone" class="form-control" v-model="phone" id="phone" style="padding-left: 32px" placeholder="请输入手机号" minlength="11" maxlength="11">
                                         <i class="fa fa-user"></i>
-                                        <span v-show="emaile" class="err">{{emailError}}</span>
+                                        <span v-show="phonee" class="err">{{phoneError}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <input type="password" class="form-control" v-model="password" id="password" placeholder="请输入登录密码">
+                                        <input type="password" class="form-control" v-model="password" id="password" placeholder="请输入登录密码（只能输入6-20个字母、数字、下划线）">
                                         <i class="fa fa-lock"></i>
                                         <span v-show="passworde" class="err">{{passwordError}}</span>
                                         <a href="javascript:void(0)" class="help-block">忘记密码？</a>
@@ -54,27 +54,53 @@
 <style src="../assets/css/animate.css"></style>
 <style src="../assets/css/main.css"></style>
 <script>
+var reg = require('../utils/regexp')
+var crypto = require('crypto')
+
 export default {
   data () {
     return {
-      emailError: '',
+      phoneError: '',
+      phonee: false,
       passwordError: '',
-      emaile: false,
       passworde: false
     }
   },
   methods: {
     signinbutton: function (e) {
+      var r = reg.exec(/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/, this.phone)
+      if (!r) {
+        this.phonee = true
+        this.phoneError = '手机格式不对'
+        return
+      }
+      var pwdr = reg.exec(/^(\w){6,20}$/, this.password)
+      if (!pwdr) {
+        this.passworde = true
+        this.passwordError = '密码格式不对'
+      }
+      var phone = this.phone
+      var password = crypto.createHmac('sha256', this.password).update('data').digest('hex')
       this.$http.post('http://127.0.0.1' + '/signin', {
-        name: 'necfol',
-        mail: 'yo@gmail.com'
-      }, function (projects) {
-        console.error(projects)
+        phone: phone,
+        mail: password
+      }, function (r, e) {
+        console.log(r, e)
       })
-      this.emailError = '2'
-      this.passwordError = '3'
-      this.emaile = true
-      this.passworde = true
+    }
+  },
+  watch: {
+    phone: function (val, oldval) {
+      if (val !== oldval) {
+        this.phoneError = ''
+        this.phonee = false
+      }
+    },
+    password: function (val, oldval) {
+      if (val !== oldval) {
+        this.passwordError = ''
+        this.passworde = false
+      }
     }
   }
 }
