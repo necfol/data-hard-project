@@ -4,19 +4,20 @@ var dbconf = require('./conf.db.js');
 var connection = mysql.createConnection({
 	host: dbconf.connection.host,
 	user: dbconf.connection.user,
-	port: 3306,
+	port: 8889,
 	password: dbconf.connection.password,
 	database: dbconf.database
 });
 
 connection.connect();
 var dbapi = {};
-dbapi.add = function(post) {
-		connection.query('INSERT INTO users VALUES ?', post, function(error) {
+dbapi.add = function(tabel, post) {
+		var query = 'INSERT INTO ' + tabel + ' SET ?';
+		connection.query(query, post, function(error, result) {
 			if (error) {
-				console.log(error.message);
+				return false;
 			} else {
-				console.log('success');
+				return true;
 			}
 		});
 		connection.end();
