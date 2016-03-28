@@ -1,8 +1,12 @@
+var sessionstore = require('sessionstore')
 var express = require('express')
 var path = require('path');
 var webpack = require('webpack')
 var config = require('./build/webpack.dev.conf')
 var bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
+var session = require('express-session')
+var RedisStore = require('connect-redis')(session)
 var proxyMiddleware = require('http-proxy-middleware')
 var signup = require('./routes/signup.js');
 var signin = require('./routes/signin.js');
@@ -62,11 +66,24 @@ app.use(devMiddleware)
 app.use(hotMiddleware)
 
 // serve pure static assets
+app.use(cookieParser())
+var options = {
+    host:'127.0.0.1',
+    port:'6379'
+}
+app.use(session({
+    store: new RedisStore(options),
+    secret: 'data'
+}));
 app.use('/static', express.static('./static'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: false
 }))
+app.get('/', function(req,res,next) {
+  console.error(req.session);
+  next();
+});
 app.use('/signup', signup)
 app.use('/signin', signin)
 module.exports = app.listen(80, function(err) {

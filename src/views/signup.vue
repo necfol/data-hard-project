@@ -22,14 +22,13 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">用户名</label>
                                 <input type="text" v-model="username" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名">
-                                <span v-show="namee" class="err">{{usernameError}}</span>
-                                <!-- <input type="email" v-model="username" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名"> -->
+                                <span v-show="usernamee" class="err">{{usernameError}}</span>
                             </div>
-                            <div class="form-group">
+                           <!--  <div class="form-group">
                                 <label for="exampleInputPassword1">邮箱</label>
                                 <input type="email" class="form-control" v-model="email" id="exampleInputPassword1" placeholder="请输入邮箱">
                                 <span v-show="emaile" class="err">{{emailError}}</span>
-                            </div>
+                            </div> -->
                              <div class="form-group">
                                 <label for="exampleInputPassword1">密码</label>
                                 <input type="password" class="form-control" v-model="password" id="exampleInputPassword1" placeholder="密码">
@@ -56,35 +55,63 @@
 <style src="../assets/css/animate.css"></style>
 <style src="../assets/css/main.css"></style>
 <script>
+var reg = require('../utils/regexp')
+var crypto = require('crypto')
+var striptags = require('striptags')
 export default {
   data () {
     return {
       usernameError: '',
-      emailError: '',
+      // emailError: '',
       passwordError: '',
       rpasswordError: '',
-      namee: false,
-      emaile: false,
+      usernamee: false,
+      // emaile: false,
       passworde: false,
       rpassworde: false
     }
   },
   methods: {
     signupbutton: function (e) {
+      var pwdr = reg.exec(/^(\w){6,20}$/, this.password)
+      if (!pwdr) {
+        this.passworde = true
+        this.passwordError = '密码格式不对'
+        return
+      }
+      if (this.password !== this.rpassword) {
+        this.rpassworde = true
+        this.rpasswordError = '密码不一致'
+        return
+      }
+      var username = this.username
+      var password = crypto.createHmac('sha256', this.password).update('data').digest('hex')
       this.$http.post('http://127.0.0.1' + '/signup', {
-        'name': '星星',
-        'email': 'necfoll@gmail.com'
-      }, function (projects) {
-        console.error(projects)
+        username: striptags(username),
+        password: password
+      }, function (err, result) {
+        console.error(err, result)
       })
-      this.usernameError = '1'
-      this.emailError = '2'
-      this.passwordError = '3'
-      this.rpasswordError = '4'
-      this.namee = true
-      this.emaile = true
-      this.passworde = true
-      this.rpassworde = true
+    }
+  },
+  watch: {
+    username: function (val, oldval) {
+      if (val !== oldval) {
+        this.usernameError = ''
+        this.usernamee = false
+      }
+    },
+    password: function (val, oldval) {
+      if (val !== oldval) {
+        this.passwordError = ''
+        this.passworde = false
+      }
+    },
+    rpassword: function (val, oldval) {
+      if (val !== oldval) {
+        this.rpasswordError = ''
+        this.rpassworde = false
+      }
     }
   }
 }
