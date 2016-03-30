@@ -89,8 +89,11 @@ export default {
       this.$http.post('http://127.0.0.1' + '/signup', {
         username: striptags(username),
         password: password
-      }, function (err, result) {
-        console.error(err, result)
+      }, function (result) {
+        if (result === 'signed') {
+          this.usernameError = '该账号已经注册'
+          this.usernamee = true
+        }
       })
     }
   },
