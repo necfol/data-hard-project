@@ -80,10 +80,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: false
 }))
-app.get('/', function(req,res,next) {
-  console.error(req.session);
-  next();
-});
 app.use('/signup', signup)
 app.use('/signin', signin)
 module.exports = app.listen(80, function(err) {

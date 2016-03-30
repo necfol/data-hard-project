@@ -9,7 +9,7 @@ router.post('/', function(req, res) {
  	var password = crypto.createHmac('sha256', req.body.password).update('data').digest('hex');
 	dbapi.selectuser('user', 'username', 'id', username, function(err, r) {
 		if(r && Number(r.length) > 0) {
-			res.json('error');
+			res.json('signed');
 		} else {
 			req.session.user = username;
 			dbapi.add('user', {
@@ -20,6 +20,7 @@ router.post('/', function(req, res) {
 					res.json('error');
 				}else {
 					req.session.user = username;
+					res.locals.user = username;
 					res.json('success');
 				}
 			});

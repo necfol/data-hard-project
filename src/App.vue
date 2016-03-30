@@ -32,7 +32,7 @@
                             <span class="avatar">
                                 <img src="assets/img/profile.jpg" class="img-circle" alt="">
                             </span>
-                        <span class="text">测试账户</span>
+                        <span class="text">{{ username }}</span>
                         <span class="caret"></span>
                         </span>
                     </a>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="profile-body dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>管理员<span class="caret"></span></h4></a>
-                    <small class="title">管理员</small>
+                    <small class="title">{{username}}</small>
                    <!--  <ul class="dropdown-menu animated fadeInRight" role="menu">
                         <li class="profile-progress">
                             <h5>
@@ -194,136 +194,6 @@
                     </li>
                 </ul>
             </div>
-          <!--   <div id="contact-list">
-                <ul>
-                    <li>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="assets/img/avatar3.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name">Ashley Bell </div>
-                                <small class="location text-muted"><i class="icon-pointer"></i> Sarasota, FL</small>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="assets/img/avatar1.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name">Brian Johnson </div>
-                                <small class="location text-muted"><i class="icon-pointer"></i> San Francisco, CA</small>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="assets/img/avatar2.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name">Chris Jones </div>
-                                <small class="location text-muted"><i class="icon-pointer"></i> Brooklyn, NY</small>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="assets/img/avatar4.jpg" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name">Erica Hill </div>
-                                <small class="location text-muted"><i class="icon-pointer"></i> Palo Alto, Ca</small>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="assets/img/avatar5.png" class="img-circle" alt="">
-                          <i class="away animated bounceIn"></i>
-                        </span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name">Greg Smith </div>
-                                <small class="location text-muted"><i class="icon-pointer"></i> London, UK</small>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="assets/img/avatar6.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name">Jason Kendall</div>
-                                <small class="location text-muted"><i class="icon-pointer"></i> New York, NY </small>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="assets/img/avatar7.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name">Kristen Davis </div>
-                                <small class="location text-muted"><i class="icon-pointer"></i> Greenville, SC</small>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="assets/img/avatar8.png" class="img-circle off" alt="">
-                          <i class="off animated bounceIn"></i>
-                        </span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name">Michael Shepard </div>
-                                <small class="location text-muted"><i class="icon-pointer"></i> Vancouver, BC</small>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="assets/img/avatar9.png" class="img-circle off" alt="">
-                          <i class="off animated bounceIn"></i>
-                        </span>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name">Paul Allen</div>
-                                <small class="location text-muted"><i class="icon-pointer"></i> Savannah, GA</small>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div> -->
             <div id="contact-user">
                 <div class="chat-user active"><span><i class="icon-bubble"></i></span>
                 </div>
@@ -334,8 +204,6 @@
             </div>
         </div>
     </aside>
-    <!--/sidebar right end-->
-    <!--Config demo-->
     <div id="config" class="config hidden-xs">
         <h4>Settings<a href="javascript:void(0)" class="config-link closed"><i class="icon-settings"></i></a></h4>
         <div class="config-swatch-wrap">
@@ -448,10 +316,22 @@
 <script>
 export default {
   ready () {
-    // this.$route.router.go('/signup')
+    if (document.cookie) {
+      var cookieArray = document.cookie.split('; ')
+      for (var i = 0; i < cookieArray.length; i++) {
+        var arr = cookieArray[i].split('=')
+        if (arr[0] === 'username') {
+          this.username = unescape(arr[1])
+        }
+      }
+    } else {
+      console.log(2)
+      this.$route.router.go('/signin')
+    }
   },
   data () {
     return {
+      username: 'hahha',
       ishome: true,
       isrealmonitor: false,
       isdevices: false,

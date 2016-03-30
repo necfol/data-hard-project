@@ -93,6 +93,14 @@ export default {
         if (result === 'signed') {
           this.usernameError = '该账号已经注册'
           this.usernamee = true
+          return
+        }
+        if (result === 'success') {
+        }
+        if (result === 'error') {
+          this.usernameError = '出错啦'
+          this.usernamee = true
+          return
         }
       })
     }

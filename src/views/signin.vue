@@ -21,9 +21,9 @@
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <input type="phone" class="form-control" v-model="phone" id="phone" style="padding-left: 32px" placeholder="请输入手机号" minlength="11" maxlength="11">
+                                        <input type="text" class="form-control" v-model="name" id="name" style="padding-left: 32px" placeholder="请输入登录名" minlength="11" maxlength="11">
                                         <i class="fa fa-user"></i>
-                                        <span v-show="phonee" class="err">{{phoneError}}</span>
+                                        <span v-show="namee" class="err">{{nameError}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -56,44 +56,44 @@
 <script>
 var reg = require('../utils/regexp')
 var crypto = require('crypto')
+var striptags = require('striptags')
 
 export default {
   data () {
     return {
-      phoneError: '',
-      phonee: false,
+      nameError: '',
+      namee: false,
       passwordError: '',
       passworde: false
     }
   },
   methods: {
     signinbutton: function (e) {
-      var r = reg.exec(/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/, this.phone)
-      if (!r) {
-        this.phonee = true
-        this.phoneError = '手机格式不对'
-        return
-      }
       var pwdr = reg.exec(/^(\w){6,20}$/, this.password)
       if (!pwdr) {
         this.passworde = true
         this.passwordError = '密码格式不对'
       }
-      var phone = this.phone
+      var username = this.name
       var password = crypto.createHmac('sha256', this.password).update('data').digest('hex')
       this.$http.post('http://127.0.0.1' + '/signin', {
-        phone: phone,
-        mail: password
-      }, function (r, e) {
-        console.log(r, e)
+        username: striptags(username),
+        password: password
+      }, function (r) {
+        if (r > 0) {
+          this.$router.go('/home')
+        } else {
+          this.nameError = '登录名或密码错误'
+          this.namee = true
+        }
       })
     }
   },
   watch: {
-    phone: function (val, oldval) {
+    name: function (val, oldval) {
       if (val !== oldval) {
-        this.phoneError = ''
-        this.phonee = false
+        this.nameError = ''
+        this.namee = false
       }
     },
     password: function (val, oldval) {
